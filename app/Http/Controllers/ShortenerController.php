@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LinksRequest;
 use App\Models\Link;
 use Illuminate\Http\Request;
 use Str;
@@ -19,7 +20,7 @@ class ShortenerController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(LinksRequest $request)
     {
         $full_link = $request->input('link');
         $short_link = $request->url() .'/'. Str::random(5);

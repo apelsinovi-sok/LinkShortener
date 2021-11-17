@@ -14,7 +14,9 @@
     <p><input type="submit" id="ajaxSubmit"></p>
 </form>
 <a href=""><div id="new_link"></div></a>
-
+@if($errors->any())
+    lol
+@endif
 </body>
 </html>
 
