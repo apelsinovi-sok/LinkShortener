@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Link;
 use Illuminate\Http\Request;
 
 class ShortenerController extends Controller
 {
-    public function index()
+    public function index($link = "")
     {
-        return view('shortLink');
+//        Link::create(
+//            ['full_link' =>\Str::random(),
+//                'short_link' => \Str::random()]);
+
+        return view('shortLink')->with('link',$link);
     }
 
-    public function show(Request $request)
+    public function store(Request $request): string
     {
-        return $request->input();
+//        Link::create(
+//            ['full_link' => $url,
+//                'short_link' => \Str::random()]);
+
+        return  $request->input();
     }
 }

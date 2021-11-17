@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ShortenerController::class, 'index']);
+Route::get('/{link?}', [ShortenerController::class, 'index']);
 
-Route::post('/', [ShortenerController::class, 'show']);
+Route::post('/', [ShortenerController::class, 'store']);

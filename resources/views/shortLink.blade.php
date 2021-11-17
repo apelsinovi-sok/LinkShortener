@@ -14,6 +14,7 @@
     <p><input type="submit" id="ajaxSubmit"></p>
 </form>
 <div id="new_link"></div>
+{{$link}}
 </body>
 </html>
 
@@ -28,15 +29,20 @@
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               }
           })
-        $.ajax({
-            url: "/",
-            method: "POST",
-            data: {text: $("#link").val()},
-            success: function (result) {
-                $("#new_link").text(result.text)
-                console.log(result.text)
-            }
-        })
+           if( $("#link").val() == ""){
+               alert("Поле не заполненно")
+           } else {
+               $.ajax({
+                   url: "/",
+                   method: "POST",
+                   data: {text: $("#link").val()},
+                   success: function (result) {
+                       $("#new_link").text(result)
+                       console.log(result)
+                   }
+               })
+           }
+
        })
     })
 </script>
