@@ -10,11 +10,11 @@
 <body>
 <form action="" method="post">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <p><input type="text" id="link" name="link"></p>
+    <p><input type="text" id="link" name="str"></p>
     <p><input type="submit" id="ajaxSubmit"></p>
 </form>
-<div id="new_link"></div>
-{{$link}}
+<a href=""><div id="new_link"></div></a>
+
 </body>
 </html>
 
@@ -35,14 +35,14 @@
                $.ajax({
                    url: "/",
                    method: "POST",
-                   data: {text: $("#link").val()},
+                   data: {link: $("#link").val()},
                    success: function (result) {
                        $("#new_link").text(result)
+                       $("a").attr("href" , result)
                        console.log(result)
                    }
                })
            }
-
        })
     })
 </script>
